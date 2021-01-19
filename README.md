@@ -8,6 +8,8 @@
 
 ### Links and Resources
 
+[Bootstrap Docs](https://getbootstrap.com/docs/4.0/getting-started/webpack/#importing-compiled-css)
+[Reactjs Docs](https://reactjs.org/docs/hooks-state.html)
 
 
 ### Setup

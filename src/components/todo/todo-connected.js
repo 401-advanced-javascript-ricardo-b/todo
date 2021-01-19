@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import TodoForm from './form.js';
 import TodoList from './list.js';
 
+
 import './todo.scss';
 
 const todoAPI = 'https://api-js401.herokuapp.com/api/v1/todo';
@@ -64,9 +65,15 @@ const ToDo = () => {
 
   useEffect(_getTodoItems, []);
 
+  useEffect(()=>{
+    document.title = `${list.filter(item => item.complete).length} Complete/${list.filter(item => !item.complete).length} Incomplete`
+
+  })
+
   return (
     <>
       <header>
+        <h1>Hello</h1>
         <h2>
           There are {list.filter(item => !item.complete).length} Items To Complete
         </h2>
@@ -75,7 +82,7 @@ const ToDo = () => {
       <section className="todo">
 
         <div>
-          <TodoForm handleSubmit={_addItem} />
+          <TodoForm sendTodo={_addItem} />
         </div>
 
         <div>

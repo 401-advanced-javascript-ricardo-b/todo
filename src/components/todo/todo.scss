@@ -13,6 +13,10 @@ body, html {
       flex-direction:row;
       justify-content:space-between;
       padding:.5em 1em;
+
+      h1{
+        background: blue;
+      }
   }
 
   .item {
@@ -53,29 +57,32 @@ body, html {
           display:flex;
           flex-direction:row;
           font-size: .75em;
-          margin: .75em .5em;
+          // margin: 0em .5em;
+
 
           &.complete-true {
             span {
-              background: pink;
-              text-decoration:line-through;
+              background:rgba(139, 40, 40, 0.836);
+              // text-decoration:line-through;
               &:hover {
-                 background: seagreen;
+                 background: #1c6e1c;
               }
             }
           }
 
           span {
-              background: #e0e0e0;
-              cursor:pointer;
-              &:hover {
-                  background: pink;
-              }
+            height: 4.5em;
+            background: #1c6e1c;
+            cursor:pointer;
+            &:hover {
+                background: rgba(139, 40, 40, 0.836);
+            }
           }
            span, input {
                border: .5px solid #eee;
                display:inline-block;
-               padding: .2em .25em;
+               text-align: left;
+               padding: 1.2em 1.5em;
                width: 300px;
            }
 

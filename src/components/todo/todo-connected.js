@@ -33,9 +33,7 @@ const ToDo = () => {
     let item = list.filter(i => i._id === id)[0] || {};
 
     if (item._id) {
-
       item.complete = !item.complete;
-
       let url = `${todoAPI}/${id}`;
 
       fetch(url, {
@@ -52,6 +50,26 @@ const ToDo = () => {
         .catch(console.error);
     }
   };
+
+  const _itemDelete = id =>{
+    let item = list.filter(i=> i._id === id)[0] || {};
+
+    if (item._id){
+      let url = `${todoAPI}/${id}`;
+
+      fetch(url, {
+        method: 'delete',
+        mode: 'cors',
+        cache: 'no-cache',
+        headers: { 'Content-Type': 'application/json' },
+        
+      })
+        .then(response => response.json())
+        
+        .catch(console.error);
+    }
+    // _getTodoItems();
+  }
 
   const _getTodoItems = () => {
     fetch(todoAPI, {
@@ -89,6 +107,7 @@ const ToDo = () => {
           <TodoList
             list={list}
             handleComplete={_toggleComplete}
+            deleteItem={_itemDelete}
           />
         </div>
       </section>

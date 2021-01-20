@@ -71,7 +71,8 @@ body, html {
           }
 
           span {
-            height: 4.5em;
+            height: 7em;
+            
             background: #1c6e1c;
             cursor:pointer;
             &:hover {
@@ -83,7 +84,7 @@ body, html {
                display:inline-block;
                text-align: left;
                padding: 1.2em 1.5em;
-               width: 300px;
+               width: 35em;
            }
 
           button {

@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 
 const TodoList = (props)=>{
+console.log({props})
 
   return (
     <ul>
@@ -9,8 +10,18 @@ const TodoList = (props)=>{
           className={`complete-${item.complete.toString()}`}
           key={item._id}
         >
+
           <span onClick={() => props.handleComplete(item._id)}>
-            {item.text} : {item.assignee}
+
+            <section className="assignee">
+              {item.assignee}
+            </section>
+            <section className="deleteButton">
+              <button onClick={() => props.deleteItem(item._id)}>X</button>
+            </section>
+            <section>
+              {item.text}
+            </section>
           </span>
         </li>
       ))}

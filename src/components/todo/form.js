@@ -23,23 +23,19 @@ const TodoForm = (props)=>{
         <form onSubmit={handleSubmit}>
           <label>
             <span>To Do Item</span>
-            <input
-              name="text"
-              placeholder="Add To Do List Item"
-              onChange={handleInputChange}
-            />
+            <input data-testid="todoItem" name="text" placeholder="Add To Do List Item" onChange={handleInputChange}/>
           </label>
 
           <label>
             <span>Assigned To</span>
-            <input type="text" name="assignee" placeholder="Assigned To" onChange={handleInputChange} />
+            <input data-testid="assignee" type="text" name="assignee" placeholder="Assigned To" onChange={handleInputChange} />
           </label>
           
           <label>
             <span>Difficulty Rating</span>
             <input defaultValue="1" type="range" min="1" max="5" name="difficulty" onChange={handleInputChange} />
           </label>
-          <button>Add Item</button>
+          <button data-testid="submit">Add Item</button>
         </form>
       </>
     );

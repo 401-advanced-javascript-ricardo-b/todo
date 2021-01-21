@@ -1,13 +1,16 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 import ToDo from './components/todo/todo-connected.js';
+import AppContext from './components/context/appContext'
 
-const App = ()=> {
+const App = () => {
   
     return (
       <>
-        <ToDo />
+        <AppContext>
+          <ToDo />
+        </AppContext>
       </>
     );
 }

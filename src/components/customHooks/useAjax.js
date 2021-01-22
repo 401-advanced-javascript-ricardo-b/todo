@@ -21,6 +21,8 @@ const useAxios = () => {
 
   const _addItem = (item) => {
     item.due = new Date();
+    console.log('posting a life');
+
     axios.post(todoAPI, {
       assignee: item.assignee,
       complete: false,
@@ -35,13 +37,16 @@ const useAxios = () => {
       .catch(console.error);
   };
 
-  const _toggleComplete = id => {
+  const _toggleComplete = (id) => {
 
     let item = list.filter(i => i._id === id)[0] || {};
 
     if (item._id) {
       item.complete = !item.complete;
       let url = `${todoAPI}/${id}`;
+
+      console.log('putting a life');
+
 
       axios.put(url, {
         complete: item.complete
@@ -59,15 +64,19 @@ const useAxios = () => {
 
     if (item._id){
       let url = `${todoAPI}/${id}`;
+      console.log('deleting a life');
+
 
       axios.delete(url)
-        .then(()=> _getTodoItems)
+        .then((data)=> _getTodoItems())
         .catch(console.error);
     }
     // _getTodoItems();
   }
 
   const _getTodoItems = () => {
+    console.log('getting a life');
+
     axios.get(todoAPI, {
     })
       .then(response =>{

@@ -3,14 +3,20 @@ import React from 'react';
 
 import ToDo from './components/todo/todo-connected.js';
 import AppContext from './components/context/appContext'
+import 
+
+
 
 const App = () => {
-  
     return (
       <>
-        <AppContext>
-          <ToDo />
-        </AppContext>
+        <LoginContext>
+          <AppContext>
+            <Login />
+            <DeleteLink />
+            <ToDo />
+          </AppContext>
+        </LoginContext>
       </>
     );
 }

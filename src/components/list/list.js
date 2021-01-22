@@ -15,14 +15,14 @@ const TodoList = (props)=>{
     let pageButtonArray = [];
     let pageNum = Math.ceil((props.list.length) / appContext.maxDisplay);
     for(let i = 1; i <= pageNum; i++){
-      pageButtonArray.push(<button key={i} name={i} onclick={nextPage}>Page {i}</button>)
+      pageButtonArray.push(<button key={i} name={i} onClick={nextPage}>Page {i}</button>)
     }
     setPageCount([pageButtonArray]);
   }
 
   const nextPage = (e) =>{
     let pageNumber = e.target.name;
-    let newPage = props.list.slice((pageNumber-1)* appContext.maxDisplay, appContext.maxDisplay + (pageNumber-1) * AppContext.maxDisplay);
+    let newPage = props.list.slice((pageNumber-1) * appContext.maxDisplay, appContext.maxDisplay + (pageNumber-1) * AppContext.maxDisplay);
     setNextPage(newPage);
   }
 
@@ -42,9 +42,9 @@ const TodoList = (props)=>{
             key={item._id}
           >
 
-            <span onClick={() => props.handleComplete(item._id)}>
+            <span >
 
-              <section className="assignee">
+              <section onClick={() => props.handleComplete(item._id)} className="assignee">
                 {item.assignee}
               </section>
               <section className="deleteButton">

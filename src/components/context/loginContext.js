@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import cookie from 'react-cookies';
 import jwt from 'jsonwebtoken';
 
-cont API = process.env.REACT_APP_API; 
+const API = process.env.REACT_APP_API; 
+// https://auth-server-401d39.herokuapp.com
 
 export const LoginContext = React.createContext();
 
@@ -19,12 +20,17 @@ function LoginProvider(props){
         'Authorization': `Bawsic ${btoa(`${username}:${password}`)}`,
       }),
     })
-      .then(response => response.text())
-      .then(token => this.validateToken(token))
+      .then(response =>{ 
+        return response.json()
+      })
+      .then(user =>{
+        console.log('user', user);
+        validateToken(user.token);
+      })
       .catch(console.error);
   }
 
-  validateToken = token =>{
+  const validateToken = token =>{
     try{
       let user = jwt.verify(token, process.env.REACT_APP_SECRET);
       this.setLoginState(true, token, user);
@@ -35,12 +41,34 @@ function LoginProvider(props){
     } 
   };
 
-  logout = () =>{
-    this.setLoginState(false, null, {});
-  };
+  // const logout = () =>{
+  //   this.setLoginState(false, null, {});
+  // };
 
-  // setLoginState = (loggedIn, token, user)+>{
-  //   cookie.save('auth', token);
-  //   this.setState({token, loggedIn, user})
+  const setLoginState = (loggedIn, token, user)=>{
+    cookie.save('auth', token);
+    setLoggedIn(true);
+    setUser(user);
+  }
+
+  const state = {
+    user,
+    loggedIn,
+    login: login  
+  }
+
+  // componentDidMount(){
+  //   const searchURL = URLSearchParams(window.location.search);
+  //   const cookieToken = cookie.load('auth');
+  //   const token = searchURL.get('token') || cookieToken || null;
+  //   this.validateToken(token); 
   // }
+
+  return(
+    <LoginContext.Provider value={state}>
+      {props.children}
+    </LoginContext.Provider>
+  )
 }
+
+export default LoginProvider;
